@@ -1,1 +1,1 @@
-THis is the repository of my first rails app
+THis is the repository of my first rails <applet></applet>
