@@ -1,0 +1,16 @@
+<% obj.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+
+        <td>
+        <small>Created by: <%= article.user.username if article.user%>,
+                  <%= time_ago_in_words(article.created_at) %> ago,
+                  last updated: <%= time_ago_in_words(article.updated_at) %> ago</small></td>
+        <td><%= link_to 'Show', article, class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-xs btn-primary" %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+      </tr>
+
+
+    <% end %>
