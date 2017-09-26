@@ -13,7 +13,8 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody align="center">
+    <%= will_paginate %>
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to gravatar_for(user), user_path(user) %></td> 
@@ -26,6 +27,8 @@
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-xs btn-danger" %></td>
       </tr>
     <% end %>
+    <%= will_paginate %>
+
   </tbody>
 </table>
 
