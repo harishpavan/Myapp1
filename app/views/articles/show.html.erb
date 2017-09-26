@@ -3,11 +3,21 @@
   <h2 align="center"><strong>Title:</strong>
   <%= @article.title %></h2>
 
-<div class="well cols-sm-10 cols-sm-offset-4"
-  <h2 align="center"><strong>Description:</strong></h2>
-  <hr>
-  <h4><%= simple_format(@article.description) %></h4>
-  <hr>
+
+<div class="well cols-sm-10 cols-sm-offset-4">
+    <% if @article.user %>
+        <tr>
+        <td><%= link_to gravatar_for(@article.user), user_path(@article.user) %></td> 
+        <td><%= link_to @article.user.username, user_path(@article.user) %></td>
+        <li>
+        <td><small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small>
+        </li>
+        </td>
+        </tr>
+    <% end %>
+    <h2 align="center"><strong>Description:</strong></h2>
+    <h4><%= simple_format(@article.description) %></h4>
+</div>
 
   <div class="article-actions">
 	<%= link_to 'Edit this article', edit_article_path(@article), class: "btn btn-xs btn-primary" %> 
