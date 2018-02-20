@@ -1,7 +1,42 @@
-<h1 align="center">New Article</h1>
+<h1>Create an article</h1>
+<% if @article.errors.any? %>
 
-<%= render 'form', article: @article %>
-<div class="col-xs-4 col-xs-offset-4">
+<h2>The following errors prevented the article from getting created</h2>
 
-	[ <%= link_to 'Cancel request and request to articles listing', articles_path %> ]
-</div>
+<ul>
+
+<% @article.errors.full_messages.each do |msg| %>
+
+<li><%= msg %></li>
+
+<% end %>
+
+</ul>
+
+<% end %>
+
+<%= form_for @article do |f| %>
+
+<p>
+
+<%= f.label :title %><br/>
+
+<%= f.text_field :title %>
+
+</p>
+
+<p>
+
+<%= f.label :description %><br/>
+
+<%= f.text_area :description %>
+
+</p>
+
+<p>
+
+<%= f.submit %>
+
+</p>
+
+<% end %>
